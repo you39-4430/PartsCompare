@@ -1,38 +1,21 @@
-<!DOCTYPE html>
-<html lang="ja">
+<?php
+require '../function.php';
+$file = getMbList();
+?> 
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>GraphicsBoard比較</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
+<?php getHead("マザーボード比較") ?>
 
 <body>
-  <!-- ここからヘッダー -->
-  <div class="header">
-    <div class="container">
-      <h1><a href="../cpu/cpu.php">PCパーツ比較</a></h1>
-    </div>
-  </div>
-  <!-- ここまでヘッダー -->
+  <?php getHeader() ?>
 
   <!-- ここからメインコンテンツ -->
   <div class="main">
     <div class="container">
       <div class="main-wrapper">
-        <div class="sidemenu col-3">
-          <ul>
-            <li><a href="../cpu/cpu.php">cpu</a></li>
-            <li><a href="../graphics/graphics.php">グラフィックボード</a></li>
-            <li><a href="mb.php">マザーボード</a></li>
-            <li><a href="../memory/memory.php">メモリー</a></li>
-          </ul>
-        </div>
+        <?php sideMenu() ?>
+
         <div class="maincontent col-9">
-          <form action="/parts/mb/mbhikaku.php">
+          <form action="/mb/mbhikaku.php">
           <div class="scroll">
             <table class="table table-bordered">
               <tr>
@@ -47,7 +30,6 @@
                 <th></th>
               </tr>
               <?php
-              $file = file('mb.csv');
               foreach ($file as $fline) {
                 $line = explode(",", $fline);
                 print '<tr>';
