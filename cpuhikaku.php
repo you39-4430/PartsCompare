@@ -8,7 +8,7 @@ if (!empty($_GET['name'])) {
     $line = explode(",", $fline);
     if (in_array($line[1], $_GET['name'])) {
       $hikakuList[] = $line;
-    } 
+    }
   }
 }
 
@@ -20,19 +20,19 @@ if (!empty($_GET['name'])) {
   <?php getHeader() ?>
 
   <!-- ここからメインコンテンツ -->
-  <div class="main">
-    <div class="container">
-      <div class="main-wrapper">
-        <?php sideMenu() ?>
+  <div class="container-fluid">
+    <div class="row">
+      <?php sideMenu() ?>
 
-        <div class="maincontent col-9">
-          <?php  if(!empty($hikakuList)): ?>
-            <form action="/parts/cpuhikaku.php">
-              <div class="scroll">
-              <table class="table table-bordered">
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <h2>CPU比較</h2>
+        <?php if (!empty($hikakuList)) : ?>
+          <form action="/parts/cpuhikaku.php">
+            <div class="scroll">
+              <table class="table table-striped table-sm">
                 <tr>
                   <th>製品名</th>
-                  <?php foreach ($hikakuList as $list):?>
+                  <?php foreach ($hikakuList as $list) : ?>
                     <td><?php echo $list[1] ?></td>
                   <?php endforeach; ?>
                 </tr>
@@ -61,21 +61,20 @@ if (!empty($_GET['name'])) {
                   <?php endforeach; ?>
                 </tr>
               </table>
-                  </div>
-            </form>
-            <?php else :?>
-              <h1>対象が選択されていません</h1>
-          <?php endif ?>
-          <a href="/" class="button">CPU選択に戻る</a>
+            </div>
+          </form>
+        <?php else : ?>
+          <h1>対象が選択されていません</h1>
+        <?php endif ?>
+        <a href="/" class="btn btn-primary">CPU選択に戻る</a>
 
-          <script>
-            function addItem(itemName) {
-              alert(itemName)
-            }
-          </script>
-        </div>
-      </div>
+        <script>
+          function addItem(itemName) {
+            alert(itemName)
+          }
+        </script>
     </div>
+  </div>
   </div>
   <!-- ここまでメインコンテンツ -->
 

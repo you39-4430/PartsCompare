@@ -14,22 +14,22 @@ if (!empty($_GET['name'])) {
 
 ?>
 
-<?php getHead("memory比較") ?>
+<?php getHead("メモリー比較") ?>
 
 <body>
   <?php getHeader() ?>
 
   <!-- ここからメインコンテンツ -->
-  <div class="main">
-    <div class="container">
-      <div class="main-wrapper">
-        <?php sideMenu() ?>
+  <div class="container-fluid">
+    <div class="row">
+      <?php sideMenu() ?>
 
-        <div class="maincontent col-9">
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <h2>メモリー比較</h2>
           <?php if (!empty($hikakuList)) : ?>
-            <form action="/memory/memoryhikaku.php">
-              <div class="scroll">
-                <table class="table table-responsive table-hover">
+            <form action="/parts/memory/memoryhikaku.php">
+            <div class="scroll">
+              <table class="table table-striped table-sm">
                   <tr>
                     <th>メモリチップ規格</th>
                     <?php foreach ($hikakuList as $list) : ?>
@@ -72,7 +72,7 @@ if (!empty($_GET['name'])) {
           <?php else : ?>
             <h1>対象が選択されていません</h1>
           <?php endif ?>
-          <a href="/memory/" class="button">メモリー選択に戻る</a>
+          <a href="/memory/" class="btn btn-primary">メモリー選択に戻る</a>
 
           <script>
             function addItem(itemName) {
@@ -82,10 +82,9 @@ if (!empty($_GET['name'])) {
         </div>
       </div>
     </div>
-  </div>
-  <!-- ここまでメインコンテンツ -->
+    <!-- ここまでメインコンテンツ -->
 
-  <?php scripts(); ?>
+    <?php scripts(); ?>
 </body>
 
 </html>

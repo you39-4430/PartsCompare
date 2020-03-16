@@ -8,16 +8,17 @@ $file = getMemoryList();
 <body>
   <?php getHeader() ?>
 
-  <!-- ここからメインコンテンツ -->
-  <div class="main">
-    <div class="container">
-      <div class="main-wrapper">
-        <?php sideMenu() ?>
+  <div class="container-fluid">
+    <div class="row">
+      <?php sideMenu() ?>
 
-        <div class="maincontent col-9">
-          <form action="/memory/memoryhikaku.php">
-            <div class="scroll">
-              <table class="table table-bordered">
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <h2>メモリー比較</h2>
+
+        <form action="/memory/memoryhikaku.php">
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
                 <tr>
                   <th>メモリチップ規格</th>
                   <th>メモリモジュール規格</th>
@@ -25,9 +26,10 @@ $file = getMemoryList();
                   <th>バスクロック</th>
                   <th>転送速度</th>
                   <th>ピンの数</th>
-
                   <th></th>
-                </tr>
+                  </tr>
+              </thead>
+              <tbody>
                 <?php
                 foreach ($file as $fline) {
                   $line = explode(",", $fline);
@@ -42,24 +44,14 @@ $file = getMemoryList();
                   print '</tr>';
                 }
                 ?>
-              </table>
-            </div>
-            <input type="submit" value="比較" class="button">
-            <script>
-              function addItem(itemName) {
-                alert(itemName)
-              }
-            </script>
-        </div>
-      </div>
+              </tbody>
+            </table>
+          </div>
+          <button type="submit" class="btn btn-primary">比較</button>
+        </form>
+      </main>
     </div>
   </div>
-  <!-- ここまでメインコンテンツ -->
-
-  <?php scripts(); ?>
-</body>
-
-</html>
 </body>
 
 </html>

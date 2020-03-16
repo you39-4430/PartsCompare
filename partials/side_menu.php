@@ -1,9 +1,26 @@
-<div class="sidemenu col-3">
-  <ul>
-    <li><a href="/">cpu</a></li>
-    <li><a href="/graphics/">グラフィックボード</a></li>
-    <li><a href="/mb/">マザーボード</a></li>
-    <li><a href="/memory/">メモリー</a></li>
-    <li><a href="/sample.php">new version</a></li>
-  </ul>
-</div>
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                CPU
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/graphics/">
+                グラフィックボード
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/mb/">
+                マザーボード
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/memory/">
+                メモリ
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>

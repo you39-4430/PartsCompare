@@ -1,33 +1,36 @@
 <?php
 require 'function.php';
 $file = getCpuList();
-?> 
+?>
 
 <?php getHead("CPU比較") ?>
 
 <body>
   <?php getHeader() ?>
 
-  <!-- ここからメインコンテンツ -->
-  <div class="main">
-    <div class="container">
-      <div class="main-wrapper">
-        <?php sideMenu() ?>
+  <div class="container-fluid">
+    <div class="row">
+      <?php sideMenu() ?>
 
-        <div class="maincontent col-9">
-          <form action="/cpuhikaku.php">
-            <div class="scroll">
-              <table class="table table-bordered">
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <h2>CPU比較</h2>
+
+        <form action="/cpuhikaku.php">
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
                 <tr>
                   <th>製造元</th>
                   <th>プロダクト名</th>
                   <th>コア数</th>
-                  <th>ベースクロック</th>
+                  <th>ベースクロック数</th>
                   <th>ブーストクロック</th>
                   <th>消費電力</th>
                   <th>相場</th>
                   <th></th>
                 </tr>
+              </thead>
+              <tbody>
                 <?php
                 foreach ($file as $fline) {
                   $line = explode(",", $fline);
@@ -39,25 +42,18 @@ $file = getCpuList();
                   print '<td>' . $line[4] . 'Mhz' . '</td>';
                   print '<td>' . $line[5] . 'W' . '</td>';
                   print '<td>' . $line[6] . '円' . '</td>';
-                  print "<td><input type=\"checkbox\" value=\"${line[1]}\" name=\"name[]\">追加する</input></td>";
+                  print "<td><input type=\"checkbox\" value=\"${line[1]}\" name=\"name[]\"> 追加する</input></td>";
                   print '</tr>';
                 }
                 ?>
-              </table>
-            </div>
-            <input type="submit" value="比較" class="button">
-            <script>
-              function addItem(itemName) {
-                alert(itemName)
-              }
-            </script>
-        </div>
-      </div>
+              </tbody>
+            </table>
+          </div>
+          <button type="submit" class="btn btn-primary">比較</button>
+        </form>
+      </main>
     </div>
   </div>
-  <!-- ここまでメインコンテンツ -->
-
-  <?php scripts(); ?>
 </body>
 
 </html>
